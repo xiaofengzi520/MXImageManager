@@ -14,6 +14,7 @@
 @end
 
 @implementation ViewController
+
 - (IBAction)pickPhoto:(UIButton *)sender {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -32,9 +33,9 @@
     UIGraphicsBeginImageContextWithOptions(bgImage.size, NO, 0.0);
     [bgImage drawInRect:CGRectMake(0, 0, bgImage.size.width, bgImage.size.height)];
     
-    UIImage *waterImage = [UIImage imageNamed:@"person_icon_vip7@2x"];
-    CGFloat scale = 10.0f;
-    CGFloat margin = 50.0f;
+    UIImage *waterImage = [UIImage imageNamed:@"logo"];
+    CGFloat scale = .3f;
+    CGFloat margin = 7.0f;
     CGFloat waterW = waterImage.size.width * scale;
     CGFloat waterH = waterImage.size.height * scale;
     CGFloat waterX = bgImage.size.width - waterW - margin;
@@ -54,6 +55,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"bg" ofType:@"jpeg"];
+    _imageView.image = [UIImage imageWithContentsOfFile:path];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
